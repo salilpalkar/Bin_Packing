@@ -65,14 +65,6 @@ class BinPacking{
     void firstFitBounded(){
         ArrayList<Integer> addedIndices=new ArrayList<>();//stores the indices of the elements already added
         for(int i=0;i<noOfBins;i++){
-//            for(int j=0;j<objects.size();j++){
-//                if(bin[i].isFull())
-//                    break;
-//                if((bin[i].currSize+objects.get(j))<=bin[i].size && !addedIndices.contains(j)){
-//                    bin[i].add(objects.get(j));
-//                    addedIndices.add(j);
-//                }
-//            }
             while(!bin[i].isFull()){
                 int ndx=findMaxIndex(addedIndices,bin[i].size-bin[i].currSize);
                 if(ndx!=-1){
@@ -122,13 +114,18 @@ class BinPacking{
 public class ADSAssignment {
     public static void main(String[] args) {
         //int object[]={6,3,2,1,5,4};
-        int sizeOfBin=7;
-        int noOfBins=50;
-        ArrayList<Integer> objects=generateObjects(100,sizeOfBin);
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter size of bin:- ");
+        int sizeOfBin=sc.nextInt();
+        System.out.println("Enter number of bins:- ");
+        int noOfBins=sc.nextInt();
+        System.out.println("Enter number of objects:- ");
+        int noOfObjects=sc.nextInt();
+        ArrayList<Integer> objects=generateObjects(noOfObjects,sizeOfBin);
         boolean exit=false;
         do{
             System.out.println("1. NextFit   2. First Fit Bounded   3. Exit");
-            Scanner sc=new Scanner(System.in);
+            
             
             switch(sc.nextInt()){
                 case 1:
@@ -165,29 +162,6 @@ public class ADSAssignment {
                     exit=true;
             }
         }while(!exit);
-         
-//        BinPacking b=new BinPacking(objects,sizeOfBin,noOfBins);
-//        b.nextFit();
-//        b.display();
-//        
-//        System.out.println("Memory wasted= "+b.calculateMemoryWasted());
-//        System.out.println("Enter element to search:- ");
-//        
-//        //Scanner sc=new Scanner(System.in);
-//        int ele=sc.nextInt();
-//        b.search(ele);
-//          ArrayList<Integer> objectsffb=new ArrayList<>();
-//          objectsffb.add(6);
-//          objectsffb.add(5);
-//          objectsffb.add(4);
-//          objectsffb.add(1);
-//          objectsffb.add(3);
-//          objectsffb.add(2);
-//          
-//          BinPacking ffb=new BinPacking(objects,sizeOfBin,noOfBins);
-//          ffb.firstFitBounded();
-//          ffb.display();
-//          System.out.println("Memory Wasted="+ffb.calculateMemoryWasted());
     }
     static ArrayList<Integer> generateObjects(int number,int sizeOfBin){
         ArrayList<Integer> arr=new ArrayList<>();
@@ -198,8 +172,7 @@ public class ADSAssignment {
                 i--;            
             else
                arr.add(random);
-        }           
-       // arr.add(6);arr.add(3);arr.add(2);arr.add(1);arr.add(5);arr.add(4);
+        }          
         return arr;
     }
     
