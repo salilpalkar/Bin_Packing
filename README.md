@@ -9,5 +9,6 @@ After performing the two methods user can also search the th object and the prog
 The program also shows the time analysis of performing Next Fit and First Fit Bounded.
 It also shows time required to search the instances of the objects.
 
-There number of Bins is 50 and the number of objects is 100.
+The number of bins, number of objects and size of bin are taken from the user.
+The objects are generated randomly.
 The program also calculates the memory wasted in each oof the method.
